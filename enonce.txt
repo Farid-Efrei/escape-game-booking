@@ -1,0 +1,53 @@
+Efrei - M2 DEV1-Escape Game gitlab ci
+Efrei - M2 DEV1-Escape Game gitlab ci
+02 septembre 2025 à 20:00:00
+Gestion de Réservations pour un Escape Game
+Objectif : Créer une application PHP pour gérer les réservations d'un Escape Game, avec tests unitaires et intégration GitLab CI/CD.
+
+Énoncé
+Vous devez développer un système de réservation pour un Escape Game. Le système doit :
+
+Vérifier la disponibilité d'une salle à une date/heure donnée.
+Calculer le prix de la réservation en fonction du nombre de participants et des réductions éventuelles.
+Valider les données (ex: âge minimum, créneaux horaires).
+Les réservations seront stockées dans un tableau PHP (pas besoin de base de données).
+
+Étapes à Suivre
+1️⃣ Initialisation du Projet
+Créez un dépôt GitLab nommé escape-game-booking.
+Structurez votre projet :
+/src  
+  - Booking.php (classe principale)  
+  - Pricing.php (gestion des tarifs)  
+/tests  
+  - BookingTest.php (tests unitaires)  
+.gitlab-ci.yml (fichier CI/CD)  
+2️⃣ Développement des Fonctionnalités
+📌 Classe Booking.php
+Méthodes à implémenter :
+checkAvailability($date, $room) → Retourne true si la salle est libre.
+book($date, $room, $players) → Enregistre la réservation.
+validateAge($age) → Vérifie que tous les joueurs ont +12 ans.
+📌 Classe Pricing.php
+Méthodes à implémenter :
+calculatePrice($players) → Applique des réductions si ≥4 joueurs.
+applyDiscount($price) → Réduction de 10% si réservation en semaine.
+3️⃣ Tests Unitaires (PHPUnit)
+Écrivez des tests pour :
+Vérifier qu'une réservation est bien enregistrée.
+Tester le calcul du prix avec/sans réduction.
+Valider les contraintes (âge, créneaux horaires).
+Exemple de test :
+
+public function testBookingIsAvailable() {
+    $booking = new Booking();
+    $this->assertTrue($booking->checkAvailability("2023-12-25 15:00", "Room 1"));
+}
+4️⃣ CI/CD avec GitLab
+Configurez .gitlab-ci.yml pour :
+Lancer les tests PHPUnit à chaque push.
+Bloquer le déploiement si les tests échouent.
+Booking.php
+
+Pricing.php
+
