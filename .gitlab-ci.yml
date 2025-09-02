@@ -1,0 +1,32 @@
+image: php:8.1
+
+stages:
+  - test
+  - deploy
+
+# Cache Composer pour accélérer
+cache:
+  paths:
+    - vendor/
+
+# Job de test
+test:
+  stage: test
+  before_script:
+    - curl -sS https://getcomposer.org/installer | php
+    - php composer.phar install
+  script:
+    - vendor/bin/phpunit
+  only:
+    - branches
+
+# Job de déploiement (bloqué si tests échouent)
+deploy:
+  stage: deploy
+  script:
+    - echo "✅ Déploiement autorisé"
+  dependencies:
+    - test
+  only:
+    - main
+  when: manual

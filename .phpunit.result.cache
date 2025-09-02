@@ -1,0 +1,1 @@
+{"version":2,"defects":[],"times":{"BookingTest::testBookingIsRegistered":0.001,"BookingTest::testPriceCalculation":0.001,"BookingTest::testValidationConstraints":0.001}}

@@ -1,0 +1,11 @@
+{
+  "name": "escape-game/project",
+  "require-dev": {
+    "phpunit/phpunit": "^9.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "": "src/"
+    }
+  }
+}
